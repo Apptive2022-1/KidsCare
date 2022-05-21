@@ -3,39 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <title>로그인</title>
+
+  <style>
+  #id {
+    padding:0em 0em 0em 4em;
+    width:15em;
+    height:3em;
+    border-radius: 0.5em;
+    border: solid 2px #fc5139;
+    background-color: #fff;
+
+    font-family: NotoSansKR;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c4c4c4;
+  }
+  #pw {
+    padding:0em 0em 0em 4em;
+    width:15em;
+    height:3em;
+    border-radius: 0.5em;
+    border: solid 2px #fcd764;
+    background-color: #fff;
+
+    font-family: NotoSansKR;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c4c4c4;
+  }
+  #login {
+  cursor:pointer;
+    width:19em;
+    height:3em;
+    flex-grow: 0;
+    border-radius: 0.5em;
+    border:none;
+    background-color: #499e99;
+
+    flex-grow: 0;
+    font-family: NotoSansKR;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+  .foot {
+    font-family: NotoSansKR;
+    font-size: 0.75em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #a0a0a0;
+  }
+  input:focus {outline:none;}
+
+  </style>
 </head>
 <body>
-<div id="container" class="login" >
+<div style="width:79em;">
+<center>
+<div class="login" style="width:30em;">
   <div>
-    <a href="/"><img src="" alt="로고"></a>
+    <a href="/"><img src="/static/img/search.png" alt="로고" style="width:16em; height:10em; margin-Top:3em;"></a>
+    <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:28em; height:5em; margin:1em 0em 1em 0em;"></a>
   </div>
   <form action="/member/login" method="post">
-    <div>
-      <p class="input"><input type="text" name="loginId" maxlength="20" class="text" placeholder="아이디"></p>
+    <div style="position:relative; margin-Bottom:0.5em;">
+      <input type="text" name="loginId" maxlength="20" id="id" placeholder="아이디" onclick="this.style.color = 'black'">
+      <img src="/static/img/id.png" style="position:absolute; left:6.5em; top:0.7em; width:1.75em; height:1.75em;" id="id-img">
+    </div>
+    <div style="position:relative; margin-Bottom:0.5em;">
+      <input type="password" name="loginPassword" maxlength="20" id="pw" placeholder="비밀번호" onclick="this.style.color = 'black'">
+      <img src="/static/img/pw.png" style="position:absolute; left:6.5em; top:0.7em;  width:1.75em; height:1.75em;;" id="pw-img">
+    </div>
+    <div id="submit" style="margin-Bottom:2em;">
+      <input type="submit" value="로그인" id="login">
     </div>
 
-    <div>
-      <p class="input"><input type="password" name="loginPassword" maxlength="20" class="text" placeholder="비밀번호"></p>
-    </div>
 
-    <div>
-      <p class="submit"><input type="submit" value="로그인" class="text"></p>
-    </div>
-
-    <div>
-      <label class="autologin"><input type="checkbox" name="autologin" value="1">로그인 유지</label>
-    </div>
-
-    <div style="display:flex">
-      <div>
-        <a href="/forget">아이디/비밀번호 찾기</a>
+<!--    <div>-->
+<!--      <label class="autologin"><input type="checkbox" name="autologin" value="1">로그인 유지</label>-->
+<!--    </div>-->
+      <div style="display:flex; width:12em;">
+        <div>
+          <a href="/forget"><span class="foot">아이디/비밀번호 찾기</span></a>
+          <span class="foot">|</span>
+          <a href="/member/signup"><span class="foot">회원가입</span></a>
+        </div>
       </div>
-      &nbsp;
-      <div>
-        <a href="signup.html">회원가입</a>
-      </div>
-    </div>
   </form>
+</div>
+</center>
 </div>
 </body>
 </html>

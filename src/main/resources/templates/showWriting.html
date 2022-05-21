@@ -1,44 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<link rel="stylesheet" href="/static/logo.css">
+<script src = "/static/sidebar.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 
     <style>
-        .header {
-      display:flex;
-      height: 6em;
-      padding: 1em 1em 0em 3em;
-      background-color: rgba(246, 216, 118, 0.32);
-    }
-    body {
-      flex-grow: 0;
-      background-color: #fff;
-    }
-    span.menu {
-      cursor: pointer;
-      width: 5em;
-      height: 1em;
-      font-family: NotoSansKR;
-      font-size: 1.25em;
-      font-weight: 300;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #000;
-    }
-    .logo {
-      width: 20em;
-      margin: 0.8em 0em 0em 0em;
-      object-fit: contain;
-    }
     .board {
       float:left;
       font-family: NotoSansKR;
-      font-size: 2em;
+      font-size: 1.75em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -78,8 +50,7 @@
     }
     .nick {
       display:inline-block;
-      width:47em;
-      border:3px solid green;
+      width:37em;
       font-family: NotoSansKR;
       font-size: 1em;
       font-weight: normal;
@@ -104,7 +75,7 @@
       color: #888;
     }
     .ans {
-      margin-Left:6em;
+      margin:0em 0em 1em 6em;
       font-family: NotoSansKR;
       font-size: 1em;
       font-weight: 300;
@@ -115,23 +86,19 @@
       text-align: left;
       color: #686868;
     }
-    .rec {
-      height: 2em;
-      border: solid 1px #c2c2c2;
-      background-color: #f8f8f8;
-      border-left:none;
-      border-right:none;
-    }
     .answer {
-      margin-Top:0.2em;
+      display:flex;
+      margin:0.5em 1em 0em 0em;
       cursor:pointer;
       float:right;
+      width:7.5em;
       height:2em;
-      border-radius:0.5em;
+      border-radius:0.2em;
       border: solid 1.3px #fc5139;
       background-color: #fff;
     }
     .answer-content {
+      margin:0.3em 0em 0em 0em;
       font-family: NotoSansKR;
       font-size: 1em;
       font-weight: bold;
@@ -143,18 +110,18 @@
       color: #fc5139;
     }
     .post {
-      margin-Top:3em;
+      margin:5em 0em 3em 0em;
       cursor:pointer;
       float:left;
-      height:2.5em;
+      height:2.25em;
       background:#fff;
-      width:7em;
-      border-radius: 0.5em;
-      border: solid 3px #14a19b;
+      width:6.5em;
+      border-radius: 0.75em;
+      border: solid 1.5px #14a19b;
     }
     .post-content {
       font-family: NotoSansKR;
-      font-size: 1.5em;
+      font-size: 1.15em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -163,29 +130,82 @@
       text-align: left;
       color: #14a19b;
     }
+    .comment-title {
+      margin:2em 0em 0.75em 1em;
+      font-family: NotoSansKR;
+      font-size: 1.25em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .comment {
+      padding:1em 0em 0em 1em;
+      width:95%;
+      height:10em;
+      resize:none;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.28);
+    }
     </style>
 </head>
 <body>
-<div class="header" ><!--상단 부분-->
+<div style="width:79em; position:relative">
+    <div id="sidebar" style="display:none">
+        <center>
+            <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+            <div style="display:flex">
+                <div class="intro">반갑습니다 황정호님!</div>
+                <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
+            </div>
+            <div class="line-29"></div>
+            <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+            <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
+            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+            <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
+            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+            <div class="line-30">
+                <div style="display:flex; margin: 1em 0em 0em 2.25em;">
+                    <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+                    <div class="vector-16"></div>
+                    <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+                </div>
+            </div>
+        </center>
+    </div>
+
+<div class="header" >
     <div>
         <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
     </div>
-    <div style="position:absolute;right:10px;">
-        <div>
-            <p>계정이름</p>
-            <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+    <div class="side">
+        <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
+            <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+            <img src="/static/img/tri.png">
         </div>
+        <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em;" id="sidebtn">
     </div>
 </div>
 
 <center>
-    <div style="width:60em;">
+    <div style="width:50em;">
         <br>
         <span class="board">전체글 게시판</span>
         <div id="container">
             <!--글 메인-->
             <div>
-                <div style="display:flex; margin:5em 0em 0em 3em;">
+                <div style="display:flex; margin:4em 0em 0em 3em;">
                     <img src="/static/img/pro1.png" style="width:4em; height:4em;">
                     <div style="margin:0.5em 0em 0em 1em;">
                         <div th:text="${writing.member.nickName}">김김김</div>
@@ -197,16 +217,16 @@
                 <br>
                 <div th:text="${title}" class="title">제목</div>
                 <div th:text="${context}" class="content">내용</div>
-                <div  style="float:left; margin: 0.5em 0em 0em 4.5em;">
-                    <img src="/static/img/bubble.png">
-                    <span th:text="${writing.getAnswers().size()}">4</span>
+                <div class="bubble" style="display:flex; margin:1em 0em 1em 4.5em;">
+                    <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
+                    <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
                 </div>
             </div>
-            <br><br>
+
+            <div class="line-1"></div>
             <!--댓글-->
             <div th:each="answer : ${answers}">
-                <div class="line-1"></div>
-                <div style="display:flex; margin:1em 0em 0em 4em; border:3px solid red">
+                <div style="display:flex; margin:1em 0em 0em 4em;">
                   <img src="/static/img/pro2.png" style="width:2em; height:2em;">
                   <div style="margin:0.4em 0em 0em 0.5em">
                     <div th:text="${answer.nickName}" class="nick">닉네임</div>
@@ -215,58 +235,18 @@
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
+                <div class="line-1"></div>
             </div>
-            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><div class="rec"> <button type="button" class="answer"><span class="answer-content">답변작성</span></button></div>
+            <div class="comment-title">댓글작성</div>
+            <textarea placeholder="내용을 입력해주세요." class="comment"></textarea>
+
+<!--작성완료 클릭시 발생하는 이벤트 넣어야 함.-->
+            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><button type="button" class="answer"><img src="/static/img/comment.png" style="width:1em; height:1.2em; margin:0.2em 0.5em 0em 0.4em"><div class="answer-content">작성완료</div></button>
             </a>
-            <button class="post" onclick="location.href='/contents'"><span class="post-content">글목록</span></button>
+            <button class="post" onclick="location.href='/contents'"><span class="post-content">돌아가기</span></button>
         </div>
     </div>
 </center>
-
-
-
-
-
-
-
-
-
-
-
-<!--<div th:each="i : ${li}">-->
-<!--    <div>댓글</div>-->
-<!--    <div th:text="'작성자 : ' + ${i.writing}"></div>-->
-<!--    <div th:text="${i.context}"></div>-->
-<!--    <div th:text="'생성시간 : '+${i.createDate}"></div>-->
-<!--    <div th:text="'수정시간 : '+${i.updateDate}"></div>-->
-<!--</div>-->
-<!--<br>-->
-<!--<h3>댓글</h3>-->
-<!--<table class="table table-striped">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>#</th>-->
-<!--        <th>답변 내용</th>-->
-<!--        <th>작성자</th>-->
-<!--        <th>업로드 날짜</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="answer : ${answers}">-->
-<!--        <td th:text="${answer.id}">댓글</td>-->
-<!--        <td th:text="${answer.context}">댓글</td>-->
-<!--        <td th:text="${answer.nickName}">ㄷㄱ</td>-->
-<!--        <td th:text="${answer.createDate}">ㄷㄱㄱ</td>-->
-<!--    <tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-
-<!--<div>-->
-<!--    <a href="/contents">-->
-<!--        <span class="all-title">글목록</span>-->
-<!--        <div class="line-all"></div>-->
-<!--    </a>-->
-<!--</div>-->
-
+</div>
 </body>
 </html>

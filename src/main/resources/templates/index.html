@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/static/logo.css">
+<script src = "/static/sidebar.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>홈</title>
@@ -16,11 +18,12 @@
       background-color: #fff;
     }
     span.menu {
+      margin: 0.2em 0em 0em 0em;
       cursor: pointer;
-      width: 5em;
+      width: 4em;
       height: 1em;
       font-family: NotoSansKR;
-      font-size: 1.25em;
+      font-size: 1em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -28,6 +31,13 @@
       letter-spacing: normal;
       text-align: left;
       color: #000;
+    }
+    .line-22 {
+      display:inline-block;
+      margin-Right:0.5em;
+      width: 0.1em;
+      height: 1.5em;
+      background-color: #b9b9b9;
     }
     .logo {
       width: 20em;
@@ -41,14 +51,14 @@
       background-color: #b9b9b9;
     }
     .main {
-      width: 60em;
+      width: 50em;
       height: 10em;
       margin: 1em 0em 2em 0em;
       background-color: #f9f9f9;
       border-radius:1em;
     }
     .line-best {
-      width: 47em;
+      width: 37em;
       height: 0.1em;
       margin: 1em 0em 0em 1em;
       transform: rotate(-359.91deg);
@@ -70,13 +80,13 @@
     }
     .line-20 {
       display:inline-block;
-      width: 57.5em;
+      width: 47em;
       height: 0.1em;
       margin-Bottom:0.8em;
       background-color: #c4c4c4;
     }
     .best-content {
-      width: 60em;
+      width: 47em;
       height: 0.2em;
       margin: 2em 0em 0em 1em;
       font-family: NotoSansKR;
@@ -90,7 +100,7 @@
       color: #000;
     }
     .all {
-      width: 45em;
+      width: 35em;
     }
     .all-title {
       float:left;
@@ -113,7 +123,7 @@
     .result {
       display:inline-block;
       float:left;
-      width: 20em;
+      width: 15.4em;
       height: 5em;
       margin: 1em 1em 0em 0em;
       padding: 21px 8px 16px 9px;
@@ -136,7 +146,7 @@
     }
     .result-date {
       font-size: 0.9em;
-      margin-Left:15em;
+      margin-Left:10em;
       margin-Top:0.3em;
     }
     .result-content {
@@ -217,36 +227,55 @@
     left:5.3em;
     top:1.7em;
   }
+  .union {
+    width: 13em;
+    height: 0.1em;
+    background-color: #e1e1e1;
+  }
   </style>
 </head>
 
 <body>
-  <div class="header" ><!--상단 부분-->
+<div style="width:79em; position:relative;">
+  <div id="sidebar" style="display:none">
+    <center>
+      <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+      <div style="display:flex">
+        <div class="intro">반갑습니다 황정호님!</div>
+        <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
+      </div>
+      <div class="line-29"></div>
+      <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+      <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+      <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
+      <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+      <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
+      <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+      <div class="line-30">
+        <div style="display:flex; margin: 1em 0em 0em 2.25em;">
+          <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+          <div class="vector-16"></div>
+          <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+        </div>
+      </div>
+    </center>
+  </div>
+
+  <div class="header" >
     <div>
-<!--      <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>-->
       <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
     </div>
-    <div style="position:absolute;right:10px;">
-      <div style="display:flex">
-        <span onclick="location.href='/member/signup'" class="menu">
-          회원가입
-        </span>
-        <div class="line"></div>
-        &nbsp;&nbsp;
-        <span onclick="location.href='/member/login'" class="menu">
-          로그인
-        </span>
-      </div>
-      <div>
-        <p>계정이름</p>
-        <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
-      </div>
+    <div style="position:absolute;display:flex; left:65em; top:4.5em;">
+      <span onclick="location.href='/member/login'" class="menu">로그인</span>
+      <div class="line-22"></div>
+      <span onclick="location.href='/member/signup'" class="menu">회원가입</span>
+      <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
     </div>
   </div>
 
 
   <center>
-    <div class="content" style="width:60em;">
+    <div class="content" style="width:50em;">
       <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
         <div class="best" style="display:flex;">
           <span class="best-title">금주의 베스트 글</span>
@@ -278,19 +307,18 @@
 <!--        <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
 
         <br>
-        <div th:each="writing : ${writings}">
-          <div class="result">
-            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
-            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
-            <div class="line-1"></div>
+
+        <div class="result" th:each="writing : ${writings}">
+          <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
+          <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
+          <div class="line-1"></div>
 <!--하트, 댓글, 날짜-->
-            <div style="display:flex;">
-              <div class="bubble" style="display:flex; width:17em;">
-                <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
-                <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
-              </div>
-              <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" g.bclass="result-date">날짜</span>
+          <div style="display:flex;">
+            <div class="bubble" style="display:flex;">
+              <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
+              <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
             </div>
+            <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
           </div>
         </div>
       </div>
@@ -311,6 +339,7 @@
   <!--            <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">&#45;&#45;닥터</span></div>-->
               <div><span th:text="'좋아요 :' + ${bestExpert.totalLikeNumber} + '개'" class="di" style="margin-Right:1.5em;">좋아요</span></div>
             </div>
+            <div th:if="${index.index+1}<3" class="union" style="position:absolute; top:5.3em;"></div>
           </div>
       </div>
     </div>
@@ -335,6 +364,6 @@
 <!--                <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
 <!--              </tr>-->
 
-
+</div>
 </body>
 </html>

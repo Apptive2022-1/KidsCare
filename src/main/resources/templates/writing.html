@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/static/logo.css">
+<script src = "/static/sidebar.js"></script>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>글 작성</title>
 
     <style>
-    .header {
-      display:flex;
-      height: 6em;
-      padding: 1em 1em 0em 3em;
-      background-color: rgba(246, 216, 118, 0.32);
-    }
-    body {
-      flex-grow: 0;
-      background-color: #fff;
-    }
-    span.menu {
-      cursor: pointer;
-      width: 5em;
-      height: 1em;
-      font-family: NotoSansKR;
-      font-size: 1.25em;
-      font-weight: 300;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #000;
-    }
-    .logo {
-      width: 20em;
-      margin: 0.8em 0em 0em 0em;
-      object-fit: contain;
-    }
     .tit {
+      float:left;
       font-family: NotoSansKR;
       font-size: 1.5em;
       font-weight: bold;
@@ -47,8 +22,8 @@
       color: #000;
     }
     .title {
+      float:left;
       width:10em;
-      margin-Right:-0.5em;
       cursor:pointer;
       border: solid 3px #c4c4c4;
       border-radius : 1em 1em 0 0;
@@ -73,14 +48,18 @@
       color: #c4c4c4;
     }
     .line-9 {
-      height: 4px;
+      height: 2.75px;
       transform: rotate(-360deg);
       background-color: #fc5139;
     }
     .tag {
+      width:7em;
+      height:2.2em;
+      margin:0em 1em 0em 0em;
+      float:left;
       cursor:pointer;
       background:#ffffff;
-      border-radius: 68px;
+      border-radius: 1em;
       border: solid 2px #c4c4c4;
     }
     .tag-content {
@@ -95,14 +74,17 @@
       color: #c4c4c4;
     }
     .in-title {
-      width:30em;
-      height:2em;
+      padding:0em 1em 0em 1em;
+      width:80%;
+      height:3em;
       border: solid 2px #ededed;
       background-color: #fff;
     }
     .sub {
+      border-radius:0.5em;
       cursor:pointer;
       width:10em;
+      height:3.7em;
       padding:1em 3em 1em 3em;
       background-color: #14a19b;
       font-family: NotoSansKR;
@@ -117,10 +99,13 @@
       border:none;
     }
     .in-content {
-      width:25em;
-      height: 15em;
+      resize:none;
+      padding:1em 1em 1em 1em;
+      margin-Bottom:3em;
+      width:95%;
+      height: 20em;
       font-family: NotoSansKR;
-      font-size: 21px;
+      font-size: 1em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -132,39 +117,63 @@
     </style>
 </head>
 <body>
-
-    <div class="header" ><!--상단 부분-->
-        <div>
-            <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
-        </div>
-        <div style="position:absolute;right:10px;">
-            <div>
-                <p>계정이름</p>
-                <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+<div style="width:79em; position:relative">
+    <div id="sidebar" style="display:none">
+        <center>
+            <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+            <div style="display:flex">
+                <div class="intro">반갑습니다 황정호님!</div>
+                <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
             </div>
-        </div>
+            <div class="line-29"></div>
+            <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+            <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
+            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+            <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
+            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+            <div class="line-30">
+                <div style="display:flex; margin: 1em 0em 0em 2.25em;">
+                    <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+                    <div class="vector-16"></div>
+                    <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+                </div>
+            </div>
+        </center>
     </div>
+
+<div class="header" >
+    <div>
+        <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
+    </div>
+    <div class="side">
+        <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
+            <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+            <img src="/static/img/tri.png">
+        </div>
+        <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em;" id="sidebtn">
+    </div>
+</div>
 
 
 <form th:action="@{/contents/writing/new}" th:object="${form}" method="post">
     <center>
-        <div style="border:3px solid red; width:45em;">
-            <div style="height:2em; width:40em; border:3px solid blue">
+        <div style="width:50em;">
+            <div style="margin:2em 0em 0em 0em; width:50em; height:4em;">
                 <span class="tit">글쓰기</span>
             </div>
+
 <!--        글쓰기 영역-->
 
 
-
-
-            <div class="btn-group" style="height:2em; width:40em;">
-                <button type="button" style="background-color:#fc5139; border-color:#fc5139 " class="title" id="btn-1" onclick="t1(this)"><img class="img" id="i1" src="/static/img/nerve_g.png"><span class="title-content" id="tc1" style="color:#ffffff">소화</span></button>
+            <div class="btn-group" style="width:50em; height:2em; margin-Bottom:0.05em;">
+                <button type="button" style="background-color:#fc5139; border-color:#fc5139 " class="title" id="btn-1" onclick="t1(this)"><img class="img" id="i1" src="/static/img/nerve_w.png"><span class="title-content" id="tc1" style="color:#ffffff">소화</span></button>
                 <button type="button" class="title" id="btn-2" onclick="t2(this)"><img class="img" id="i2" src="/static/img/psy_g.png"><span class="title-content" id="tc2">기관지</span></button>
                 <button type="button" class="title" id="btn-3" onclick="t3(this)"><img class="img" id="i3" src="/static/img/hand_g.png"><span class="title-content" id="tc3">피부</span></button>
                 <button type="button" class="title" id="btn-4" onclick="t4(this)"><img class="img" id="i4" src="/static/img/eye_g.png"><span class="title-content" id="tc4">기타</span></button>
             </div>
-            <div class="line-9"></div>
 
+            <div class="line-9" style="margin-Bottom:1em;"></div>
             <div id="title-1">
                 <input type="hidden" value="0" id="복통" name="복통"/>
                 <input type="hidden" value="0" id="설사" name="설사"/>
@@ -201,10 +210,10 @@
                 <button type="button" class="tag" value="중이염" onclick="onChg(this)" id="b10"><span class="tag-content" id="c10">중이염</span></button>
                 <button type="button" class="tag" value="축농증" onclick="onChg(this)" id="b11"><span class="tag-content" id="c11">축농증</span></button>
             </div>
+            <br>
+            <div class="line-9" style="margin-Top:1.5em;"></div>
 
-            <div class="line-9"></div>
-
-            <div>
+            <div style="margin:1em 0em 1em 0em;">
                 <input type="text" th:field="*{title}" placeholder="제목을 입력해주세요" class="in-title">
                 <input type="submit" value="작성완료" class="sub">
             </div>
@@ -582,5 +591,6 @@
     }
 
     </script>
+</div>
 </body>
 </html>

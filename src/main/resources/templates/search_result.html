@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/static/logo.css">
+<script src = "/static/sidebar.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>검색결과</title>
 
     <style>
-    .header {
-      display:flex;
-      height: 6em;
-      padding: 1em 1em 0em 3em;
-      background-color: rgba(246, 216, 118, 0.32);
-    }
-    .logo {
-      width: 20em;
-      margin: 0.8em 0em 0em 0em;
-      object-fit: contain;
-    }
+
     .menu {
-      margin: 0em 3em 0em 0em;
-      border: 3px solid red;
+      margin: 0em 4em 0em 0em;
       height: 2em;
       font-family: NotoSansKR;
-      font-size: 1.5em;
+      font-size: 1.75em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -31,24 +23,26 @@
       color: #000;
     }
     #img {
-      width : 12em;
-      height : 10em;
+      width : 14em;
+      height : 12em;
     }
     .sch-btn {
+      border:0;
       margin-left:5em;
       background-color:transparent;
       cursor:pointer;
     }
     .sch-img {
-      width: 2em;
-      height: 2em;
+      margin-Right:1em;
+      width: 2.5em;
+      height: 2.5em;
       object-fit: contain;
     }
     .sch-tag {
       padding:0.3em 0em 0em 0.3em;
-      margin:0em 0.5em 0em 0.5em;
-      width: 5em;
-      height: 2em;
+      margin:0em 0.5em 0em 1em;
+      width: 7em;
+      height: 1.75em;
       border-radius: 68px;
       background-color: #f6d876;
     }
@@ -80,13 +74,13 @@
     .vector-4 {
       margin: 1em 0em 1em 0em;
       width: 50em;
-      height: 0.2em;
+      height: 0.1em;
       background-color: #ededed;
     }
    .num {
-      margin: 0em 13.5em 0em 0em;
+      margin: 1em 0em 0em 0em;
       font-family: NotoSansKR;
-      font-size: 2em;
+      font-size: 1.5em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -108,9 +102,9 @@
     }
     .result {
       margin: 1em 0em 0.5em 0em;
-      width: 37em;
-      height: 9em;
-      padding: 24px 21px 15px 35px;
+      width: 46em;
+      height: 6.5em;
+      padding: 1em 1.75em 1em 1.75em;
       border-radius: 0.5em;
       border: solid 2px #ededed;
     }
@@ -140,8 +134,7 @@
     }
     .result-content {
       display:block;
-      border:3px solid blue;
-      margin: 0.5em 0em 0em 0em;
+      margin: 0em 0em 0em 0em;
       padding: 2em 0em 0em 0em;
       font-family: NotoSansKR;
       font-size: 1em;
@@ -154,7 +147,7 @@
       color: #000;
     }
     .line-1 {
-      height: 0.2em;
+      height: 0.1em;
       margin:1em 0em 1em 0em;
       transform: rotate(-0.03deg);
       background-color: #ededed;
@@ -162,8 +155,8 @@
     .sub-tag {
       display:inline-block;
       float:left;
-      margin-Right:0.5em;
-      width: 3em;
+      margin-Right:0.4em;
+      width: 3.5em;
       height: 1.5em;
       border-radius: 92px;
       background-color: #a0a0a0;
@@ -185,20 +178,52 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <div>
-            <a href="/"><img src="/static/img/logo.png" alt="로고" class="logo"></a>
-        </div>
+<div style="width:79em; position:relative">
+    <div id="sidebar" style="display:none">
+        <center>
+            <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+            <div style="display:flex">
+                <div class="intro">반갑습니다 황정호님!</div>
+                <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
+            </div>
+            <div class="line-29"></div>
+            <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+            <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
+            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+            <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
+            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+            <div class="line-30">
+                <div style="display:flex; margin: 1em 0em 0em 2.25em;">
+                    <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+                    <div class="vector-16"></div>
+                    <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+                </div>
+            </div>
+        </center>
     </div>
 
+<div class="header" >
+    <div>
+        <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
+    </div>
+    <div class="side">
+        <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
+            <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+            <img src="/static/img/tri.png">
+        </div>
+        <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em;" id="sidebtn">
+    </div>
+</div>
+
     <center>
-    <div style="width:50em; border:3px solid red;" >
-        <div style="display:flex; align-items:center; justify-content:center; border:3px solid blue; margin-Top:2em">
+    <div style="width:60em;" >
+        <div style="display:flex; align-items:center; justify-content:center; margin-Top:2em">
             <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
             <img src="/static/img/search.png" id="img"/>
         </div>
 
-        <div class="search" style="display:flex; border:3px solid green;">
+        <div class="search" style="display:flex; margin:2em 0em 0em 1em;">
             <button class="sch-btn" type="button" onclick="s()">
                 <img src="/static/img/sch.png" class="sch-img"/>
             </button>
@@ -210,50 +235,52 @@
         </div>
 
 
-
-
-
-
         <div class="vector-4"></div>
 
-        <div>
-            <span class="num" th:text="'전체 ' + ${searchCounting} + '개'"></span>
+        <div style="float:left; margin: 1em 0em 0em 5em;">
+            <span class="num" th:text="'전체 ' + ${searchCounting} + '개'">전체</span>
+            <span style="margin-Left:43em">최신순</span>
         </div>
+        <br>
+        <br>
+
+
+
 
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
         <div th:each="result : ${searchResults}" class="result">
-            <div class="tit" style="border:3px solid red;">
+            <div class="tit">
 <!-- <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"></a>-->
                 <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.title}" class="result-title">제목</span></a>
                 <span th:text="${#temporals.format(result.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
-            <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.context}" class="result-content">내용</span></a>
+
+            <a href="#" th:href="@{/contents/{id} (id=${result.id})}" style="text-decoration-line:none;"><span th:text="${result.context}" class="result-content">내용</span></a>
 
             <div class="line-1"></div>
 
 
-            <span th:each="tag : ${result.tags}"class="result-tags">
-                <span th:if="${diseaseNames.contains(tag.getDiseaseName())}">
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).abdominalPain}" class="sub-tag"><span class="sub-content">복통</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).diarrhea}" class="sub-tag"><span class="sub-content">설사</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).nutritionalDisease}" class="sub-tag"><span class="sub-content">영양질환</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).rhinitis}" class="sub-tag"><span class="sub-content">비염</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).pneumonia}" class="sub-tag"><span class="sub-content">폐렴</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).asthma}" class="sub-tag"><span class="sub-content">천식</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).allergic}" class="sub-tag"><span class="sub-content">알레르기</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).atopy}" class="sub-tag"><span class="sub-content">아토피</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).cephalagia}" class="sub-tag"><span class="sub-content">두통</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).otitisMedia}" class="sub-tag"><span class="sub-content">중이염</span></div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).empyema}" class="sub-tag"><span class="sub-content">축농증</span></div>
+                <span th:each="tag : ${result.tags}"class="result-tags">
+                    <span th:if="${diseaseNames.contains(tag.getDiseaseName())}">
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).abdominalPain}" class="sub-tag"><span class="sub-content">복통</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).diarrhea}" class="sub-tag"><span class="sub-content">설사</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).nutritionalDisease}" class="sub-tag"><span class="sub-content">영양질환</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).rhinitis}" class="sub-tag"><span class="sub-content">비염</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).pneumonia}" class="sub-tag"><span class="sub-content">폐렴</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).asthma}" class="sub-tag"><span class="sub-content">천식</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).allergic}" class="sub-tag"><span class="sub-content">알레르기</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).atopy}" class="sub-tag"><span class="sub-content">아토피</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).cephalagia}" class="sub-tag"><span class="sub-content">두통</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).otitisMedia}" class="sub-tag"><span class="sub-content">중이염</span></div>
+                        <div th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).empyema}" class="sub-tag"><span class="sub-content">축농증</span></div>
+                    </span>
                 </span>
-            </span>
 
-            <div style="display:flex; float:right;">
-                <div class="bubble" style="margin-Right: 1em;">
-                    <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                    <span th:text="${result.getAnswers().size()}">4</span>
+                <div class="bubble" style="display:flex; float:right;">
+                    <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
+                    <div><sapn th:text="${result.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
                 </div>
-            </div>
+
 
 
         </div>
@@ -269,5 +296,6 @@
         }
 
     </script>
+</div>
 </body>
 </html>

@@ -1,0 +1,92 @@
+.header {
+      position:relative;
+      display:flex;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+.logo {
+  width: 20em;
+  margin: 0.8em 0em 0em 0em;
+  object-fit: contain;
+}
+.side {
+  position:absolute;
+  display:flex;
+  left:67.2em;
+  top:4.1em;"
+}
+#sidebtn {
+    cursor:pointer;
+}
+#sidebar {
+    position:absolute;
+    right:0em;
+    top:7em;
+    width:13em;
+    height:100%;
+    background-color: #f8f8f8;
+}
+.line-29 {
+  width: 13em;
+  height: 0.3em;
+  margin:1em 0em 1em 0em;
+  background-color: #ededed;
+}
+.line-30 {
+    width: 13em;
+    height: 2.5em;
+    background-color: #ededed;
+}
+.vector-16 {
+  margin: 0.7em 0.75em 0em 0.75em;
+  width: 0.1em;
+  height: 1em;
+  background-color: #a0a0a0;
+}
+.side-menu {
+    margin-Top:0.5em;
+    cursor:pointer;
+    font-family: NotoSansKR;
+    font-size: 1em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #a0a0a0;
+}
+.side-content {
+  float:left;
+  font-family: NotoSansKR;
+  font-size: 1em;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.side-box {
+  cursor:pointer;
+  margin:0.5em 0em 0.5em 0em;
+  width:8em;
+  height:2em;
+}
+.intro {
+    width:5em;
+    height:3em;
+    margin-Left:1.8em;
+
+    font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+}
