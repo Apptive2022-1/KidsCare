@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
-class MemberRepositoryTestJUnit5 {
+class MemberRepositoryTest {
 
     @Autowired
     MemberRepositoryImp memberRepository;

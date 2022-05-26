@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import team3.OneSubscribe.domain.*;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.TagRepository;
@@ -16,6 +17,7 @@ import team3.OneSubscribe.service.MemberService;
 import team3.OneSubscribe.service.WritingService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -37,7 +39,14 @@ public class HomeController {
     private final TagRepository tagRepository;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request) {
+
+        HttpSession sess = request.getSession(false);
+        if (sess != null && sess.getAttribute("member") != null) { //로그인 하면 회원가입, 로그인 버튼이 사라지도록.
+            model.addAttribute("isLogined", "true");
+            model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getNickName());
+        }
+
         // 금주의 베스트 글
         List<Writing> bestWritings = writingService.sequenceByAnswerNumberForAWeek();
         List<Writing> best3Writings = new LinkedList<>();
@@ -84,8 +93,6 @@ public class HomeController {
         List<Member> bestInExpert = memberRepository.findBestInexpert();
         model.addAttribute("bestExperts", bestExpert);
         model.addAttribute("bestInexperts", bestInExpert);
-
-
         return "index";
     }
 

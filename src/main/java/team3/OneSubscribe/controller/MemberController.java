@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import team3.OneSubscribe.DTO.SignupDto;
 import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.service.FormCheck;
@@ -24,14 +25,14 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("m") Member m, HttpServletRequest request, Model model) {
-        model.addAttribute("login", "fail");
         HttpSession session;
         if (memberService.login(m)) {
             session = request.getSession();//세션이 없다면 세션생성.
-            m.setNickName(memberRepository.findByLoginId(m.getLoginId()).getNickName());
+            m=memberRepository.findByLoginId(m.getLoginId());
             session.setAttribute("member", m);
             model.addAttribute("isLogined", "true");
-            return "redirect:/";//로그인 성공 //TODO 이거 "redirect:/"로 하면 왜 로그인 아이디가 안 뜨지? 원래는 "index"로 되어있었음.
+            model.addAttribute("nickName", m.getNickName());
+            return "redirect:/";//로그인 성공
         }
         return "loginFail";
     }
@@ -73,17 +74,21 @@ public class MemberController {
     //어떤 검증에서 에러가 발생했는지 알기 위해 if문을 나눠서 작성.
     //에러를 보면 어디서 뭔가 잘못되었는지 한눈에 알 수 있어야 한다. errorCode를 같이 출력함.
     @PostMapping("/signup")
-    public String signupMember(@RequestParam Member member) {
+    public String signupMember(@ModelAttribute SignupDto signupDto) {
+        System.out.println("테스트 : " + signupDto.getWho());
+        System.out.println("테스트 : " + signupDto.getExpertArr()[signupDto.getWho()]);
 
+        Member member = new Member(signupDto);
         int errorCode = 0;
-        if ((errorCode = FormCheck.idFormCheck(member.getLoginId())) != 0) {
-            return "id 형식이 맞지 않습니다. errorCode : " + errorCode;
+        if ((errorCode = FormCheck.idFormCheck(signupDto.getLoginId())) != 0) {
+            throw new RuntimeException("id 형식이 맞지 않습니다. errorCode : " + errorCode);
         }
-        if ((errorCode = FormCheck.pwFormCheck(member.getLoginPassword())) != 0) {
-            return "password 형식이 맞지 않습니다. errorCode : " + errorCode;
+        if ((errorCode = FormCheck.pwFormCheck(signupDto.getLoginPassword())) != 0) {
+            System.out.println("테스트 : " + signupDto.getLoginPassword());
+            throw new RuntimeException("password 형식이 맞지 않습니다. errorCode : " + errorCode);
         }
-        if (memberService.isIdDuplicated(member.getLoginId())) { //ajax로 중복처리 했더라도 검사하는게 맞을듯.
-            return "이미 id가 존재합니다.";
+        if (memberService.isIdDuplicated(signupDto.getLoginId())) { //ajax로 중복처리 했더라도 검사하는게 맞을듯.
+            throw new RuntimeException("이미 id가 존재합니다." + errorCode);
         }
         memberService.save(member); // id, pw 형식, 중복검사를 통과했을 때 저장.
         return "redirect:/";

@@ -30,11 +30,13 @@ public class MemberRepositoryImp implements MemberRepository {
     }
 
     @Override
-    public Member findByNickName(String nickName){
+    public Member findByNickName(String nickName) {
         return em.createQuery("select m from Member m where m.nickName = : nickName", Member.class)
                 .setParameter("nickName", nickName)
                 .getSingleResult();
-    };
+    }
+
+    ;
 
     @Override
     public List<Member> findAll() {
@@ -45,11 +47,11 @@ public class MemberRepositoryImp implements MemberRepository {
 
     @Override
     //일치하는게 없으면 null반환.
-    public Member findByLoginId(String loginId){
+    public Member findByLoginId(String loginId) {
         List<Member> li = em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)
                 .getResultList();
-        if(li.size() == 0)
+        if (li.size() == 0)
             return null;
         else
             return li.get(0);
@@ -61,33 +63,48 @@ public class MemberRepositoryImp implements MemberRepository {
     }
 
     @Override
-    public List<Member> findBestExpert(){
+    public List<Member> findBestExpert() {
         List<Member> li = em.createQuery("select m from Member m order by m.totalLikeNumber desc", Member.class)
                 .getResultList();
-        if(li.isEmpty()) return li;
+        if (li.isEmpty()) return li;
 
         List<Member> bestexperts = new LinkedList<>();
-        bestexperts.add(li.get(0));
-        bestexperts.add(li.get(1));
-        bestexperts.add(li.get(2));
+        if (li.size() > 1) {
+            bestexperts.add(li.get(0));
+        }
+        if (li.size() > 2) {
+
+            bestexperts.add(li.get(1));
+        }
+        if (li.size() > 3) {
+
+            bestexperts.add(li.get(2));
+        }
         return bestexperts;
 
     }
 
     @Override
-    public List<Member> findBestInexpert(){
+    public List<Member> findBestInexpert() {
         List<Member> li = em.createQuery("select m from Member m order by m.totalLikeNumber desc", Member.class)
                 .getResultList();
-        if(li.isEmpty()) return li;
+        if (li.isEmpty()) return li;
 
         List<Member> bestInexperts = new LinkedList<>();
-        bestInexperts.add(li.get(0));
-        bestInexperts.add(li.get(1));
-        bestInexperts.add(li.get(2));
+        if (li.size() > 1) {
+
+            bestInexperts.add(li.get(0));
+        }
+        if (li.size() > 2) {
+
+            bestInexperts.add(li.get(1));
+        }
+        if (li.size() > 3) {
+            bestInexperts.add(li.get(2));
+
+        }
         return bestInexperts;
     }
-
-
 
 
 }

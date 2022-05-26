@@ -139,7 +139,7 @@ public class ContentsWritingController {
     //전체글 조회
 
     @GetMapping("")
-    public String contents(Model model){
+    public String contents(Model model) {
         //TODO : 전부 가져오면 터진다. 10개 또는 20개씩 끊어서 가져오기
         List<Writing> writings = writingRepository.findAll();
         model.addAttribute("writings", writings);
@@ -168,7 +168,7 @@ public class ContentsWritingController {
     }
 
     @GetMapping("/{writingId}/answer")
-    public String answer(@PathVariable("writingId") Long writingId, Model model){
+    public String answer(@PathVariable("writingId") Long writingId, Model model) {
         Writing writing = writingRepository.findOneById(writingId);
         model.addAttribute("writing", writing);
 
@@ -177,7 +177,7 @@ public class ContentsWritingController {
 
     @Transactional
     @PostMapping("/{writingId}/answer")
-    public String answerForWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model){
+    public String answerForWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
 
         Writing writing = writingRepository.findOneById(writingId);
@@ -188,12 +188,26 @@ public class ContentsWritingController {
 
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
         answer.setNickName(writer.getNickName());
-
         answerRepository.save(answer);
-
         model.addAttribute("writing", writing);
-
         return "redirect:/contents/{writingId}";
     }
 
+    @GetMapping("/{writingId}/update")
+    public String updateWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
+        HttpSession sess = request.getSession(false);
+        if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
+
+            Writing writing = writingRepository.findOneById(writingId);
+            Member m = (Member) sess.getAttribute("member");
+            if (writing.getMember().getLoginId() == m.getLoginId()) {//글쓴이가 같을 때
+                model.addAttribute("isWriter", "true");
+                model.addAttribute("writing", writing);
+
+                return "updateWriting";
+            }
+
+        }
+        return "needLogin";
+    }
 }

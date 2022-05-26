@@ -1,6 +1,7 @@
 package team3.OneSubscribe.domain;
 
 import lombok.*;
+import team3.OneSubscribe.DTO.SignupDto;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,15 +9,24 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @EqualsAndHashCode
-@ToString
 @NoArgsConstructor
 public class Member {
+    public Member(SignupDto dto) {
+
+        this.loginId = dto.getLoginId();
+        this.loginPassword = dto.getLoginPassword();
+        this.name = dto.getName();
+        this.nickName = dto.getNickName();
+        this.eMail = dto.getEMail();
+        this.team = dto.getTeam();
+        this.phoneNumber = dto.getPhoneNumber() + dto.getFirst() + dto.getSecond();
+        this.expert = Expert.valueOf(dto.getExpertArr()[dto.getWho()]);
+
+    }
 
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
-
-
     @Column(unique = true)
     private String loginId; // 형식 확인 필요
 
