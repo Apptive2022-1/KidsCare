@@ -27,9 +27,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	//P6Spy 추가 // 배포단계에서 성능 고려할때 빼는거 고려
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
-	//runtimeOnly 'com.h2database:h2'
-	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
-	implementation 'mysql:mysql-connector-java:8.0.29'
+	runtimeOnly 'com.h2database:h2' //h2
+	//implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1' //mysql
+	//implementation 'mysql:mysql-connector-java:8.0.29' //mysql
 
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
