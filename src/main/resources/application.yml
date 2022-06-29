@@ -17,17 +17,6 @@ spring:
         format_sql: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: zhdhfhd33@gmail.com #구글계정이 필요해서 신민건 것을 사용함.
-    password:  #비밀번호임. 노출되면 안됨. 깃헙에 올릴 때는 지움.
-    properties:
-      mail:
-        smtp:
-          starttls:
-            enable: true
-          auth: true
   mvc:
     static-path-pattern: /static/**
   web:
