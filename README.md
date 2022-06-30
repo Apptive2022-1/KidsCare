@@ -1,14 +1,14 @@
-#KidsCare
+# KidsCare
 
-###Description
+### Description
 * Service to help with your child's illness
 * 2022.03. - 2022.07.
 * Contributor
   * Designer : **annssu05@gmail.com** ,**horse6953@gmail.com**
-  * Front: **wjdgh224**
-  * Back : **Amenable-C**, **zhdhfhd33**
+  * Front: **[wjdgh224](https://github.com/wjdgh224)**
+  * Back : **[Amenable-C](https://github.com/Amenable-C)**, **[zhdhfhd33](https://github.com/zhdhfhd33)**
   
-###Summary
+### Summary
 * 페이지
   * 홈페이지
     * 금주의 베스트
@@ -22,7 +22,7 @@
     * 사이드바
     * 로고
 
-###Front
+### Front
 * 기초적인 뼈대를 HTML로 작성
 * Zeplin을 참조해 CSS적용
 * Notion의 기획대로 오브젝트 상호작용을 JS로 구현
@@ -30,7 +30,7 @@
 
 
 
-###Language Icon
+### Language Icon
 <img src="https://user-images.githubusercontent.com/78483046/176113986-dfdec755-0842-4301-9522-e2231ef6a30b.jpg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/78483046/176113988-ad583ca1-29d1-4b86-9aa5-5f36f9f3a588.jpg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/78483046/176113994-cfe07ed7-ecfc-4af2-a09a-92b8f6dd1aae.jpg" width="50" height="50">
